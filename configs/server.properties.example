@@ -1,0 +1,11 @@
+# Example Minecraft Server Configuration
+
+motd=Modded Minecraft Server
+max-players=10
+online-mode=true
+view-distance=8
+simulation-distance=6
+difficulty=normal
+pvp=false
+enable-command-block=true
+spawn-protection=0
