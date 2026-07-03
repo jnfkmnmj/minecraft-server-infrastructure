@@ -2,93 +2,73 @@
 
 ## Background
 
-After testing a basic Minecraft server setup, I moved toward deploying a Forge 1.20.1 server so the server could support a larger modded multiplayer environment.
+After confirming that the cloud server, Ubuntu environment, Java installation, and Paper server were all working correctly, I was ready to move to the next stage of the project.
 
-The goal was to move from a simple server test to a more realistic modded server setup that could support custom mods, existing world files, and multiplayer gameplay.
+The final goal was not to host a vanilla Minecraft server, but to run a large Forge modpack with custom content and existing world data. Because of that, Paper was only used as an infrastructure validation step before deploying Forge.
 
-## Main Challenges
+## Problem
 
-Deploying Forge was more complicated than running a vanilla or Paper server.
+Compared with the Paper server, Forge introduced a much more complicated deployment process.
 
-The main challenges included:
+Instead of downloading a single server file and starting it, Forge generated a completely different directory structure with additional startup scripts, libraries, configuration files, and installer-generated resources.
 
-* setting up the correct Java version
-* understanding Forge server file structure
-* running the correct startup script
-* handling differences between Windows and Linux startup files
-* checking logs when the server failed to start
-* making sure the server could load mods correctly
+At this point, I realized that deploying Forge required understanding how the entire server environment was organized rather than simply launching a server executable.
 
-## Troubleshooting Process
+## Investigation
 
-### Java Environment
+I started by running the Forge installer and examining the files it generated.
 
-Forge 1.20.1 required Java 17, so the server environment had to be checked before starting the Forge server.
+Unlike the Paper server, the Forge installation included several unfamiliar components, including:
 
-```bash
-java -version
-```
+* installer-generated libraries
+* startup scripts for different operating systems
+* JVM configuration files
+* additional server configuration files
 
-This helped verify that the runtime environment was compatible with the server version.
+During deployment, I spent time identifying the purpose of these files instead of copying them without understanding their function.
 
-### Server File Structure
+Whenever the server failed to start, I compared the generated files, checked console output, and reviewed the deployment process step by step.
 
-I had to understand which files were required for Forge startup, including:
+Rather than changing multiple things at once, I tried to understand one issue before moving to the next.
 
-* `run.sh`
-* `run.bat`
-* `user_jvm_args.txt`
-* `libraries/`
-* `mods/`
-* `config/`
+## Decision
 
-This was important because Forge servers depend on more than just a single `.jar` file.
+Instead of immediately installing the complete modpack, I decided to first focus on one objective:
 
-### Startup Script Issues
+**Get a clean Forge server running successfully.**
 
-One major challenge was understanding the difference between Windows startup files and Linux startup files.
+This approach reduced unnecessary variables and made troubleshooting significantly easier.
 
-On Windows, the server used `run.bat`.
+Only after confirming that the Forge server itself could start correctly would I continue with world migration and mod installation.
 
-On Ubuntu Linux, the server needed to use `run.sh`.
+## Outcome
 
-This helped me understand that server deployment depends not only on the application itself, but also on the operating system and execution environment.
+The initial Forge deployment was eventually completed successfully.
 
-### Log-Based Debugging
+At the end of this stage, I had:
 
-When the server did not start correctly, I checked console output and server logs to identify the problem.
+* a working Forge server environment
+* a better understanding of the Forge server structure
+* a reproducible deployment process for future installations
 
-This process helped me develop a more systematic troubleshooting workflow:
-
-1. run the server
-2. read the error message
-3. identify the failing component
-4. adjust configuration or files
-5. test again
-
-## Result
-
-The Forge server was eventually able to start correctly in the server environment.
-
-This created the foundation for later steps, including:
-
-* importing an existing world
-* adding mods
-* testing multiplayer connections
-* troubleshooting mod compatibility
-* improving performance and stability
+This successful deployment became the foundation for all later work, including world migration, mod compatibility testing, and long-term server maintenance.
 
 ## Lessons Learned
 
-This deployment process helped me understand that running a modded server is closer to managing a small software system than simply launching a game.
+This stage completely changed my understanding of software deployment.
 
-I learned that server deployment requires:
+Before this project, I viewed starting a server as simply running an executable file.
 
-* environment setup
-* dependency management
-* operating system knowledge
-* log analysis
-* repeated testing
-* documentation
+Deploying Forge showed me that a server application depends on an entire runtime environment, including its file structure, startup scripts, dependencies, and operating system.
 
-This experience became the foundation for turning the server into a structured infrastructure project.
+Learning to understand that environment instead of treating it as a "black box" made later debugging much more manageable.
+
+## Engineering Skills Demonstrated
+
+* Linux server deployment
+* Java runtime configuration
+* Environment validation
+* Deployment planning
+* Incremental testing
+* Root cause investigation
+* Technical documentation
