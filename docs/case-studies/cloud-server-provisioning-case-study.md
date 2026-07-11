@@ -1,4 +1,4 @@
-# Cloud Server Provisioning Case Study
+# Cloud Server Provisioning
 
 ## Background
 
@@ -12,51 +12,77 @@ Although the original motivation was to improve multiplayer performance, the pro
 
 ---
 
-## Choosing a Cloud Platform
+## Problem
+
+The original peer-to-peer solution could no longer provide a stable multiplayer experience.
+
+Because the connection depended on one player's local computer and network conditions, both latency and reliability became major issues as the physical distance between players increased.
+
+Before deploying Minecraft itself, I also needed to determine:
+
+- which cloud provider to use
+- whether Linux was an appropriate operating system
+- how to remotely manage the server
+- how to configure networking for external connections
+
+These infrastructure decisions would affect every later stage of the project.
+
+---
+
+## Investigation
 
 Before deploying the server, I compared several cloud providers.
 
 My considerations included:
 
-* monthly cost
-* CPU performance
-* available memory
-* storage
-* network quality
-* ease of management
+- monthly cost
+- CPU performance
+- available memory
+- storage
+- network quality
+- ease of management
 
 After comparing multiple options, I selected Vultr as the initial deployment platform.
 
----
+Once the virtual machine was created, I prepared the operating environment before installing Minecraft.
 
-## Preparing the Server
+This process included:
 
-After creating the virtual machine, I needed to prepare the operating environment before Minecraft could even be installed.
+- deploying Ubuntu Server
+- obtaining the public IP address
+- configuring SSH access
+- connecting through FinalShell
+- understanding the Linux directory structure
+- configuring firewall rules
+- preparing network connectivity for multiplayer access
 
-The initial setup included:
-
-* deploying Ubuntu Server
-* obtaining the public IP address
-* configuring SSH access
-* connecting through FinalShell
-* understanding the Linux directory structure
-
-At this stage, I realized that running a dedicated server involved much more than launching a game application.
+At this stage, I realized that successfully hosting a dedicated server depended on infrastructure preparation rather than simply running a game application.
 
 ---
 
-## Network Configuration
+## Solution
 
-The next step was configuring the server so players could actually connect.
+Rather than immediately focusing on Minecraft itself, I treated the cloud server as an infrastructure project.
 
-This included:
+The deployment was completed incrementally:
 
-* verifying public IP connectivity
-* opening the Minecraft server port
-* checking firewall settings
-* understanding how clients communicate with a remote Linux server
+1. Deploy the Ubuntu virtual machine.
+2. Configure remote SSH access.
+3. Prepare the operating environment.
+4. Configure networking and firewall rules.
+5. Verify remote connectivity before installing additional software.
 
-Compared with my previous peer-to-peer setup, this required a much better understanding of basic networking concepts.
+Breaking deployment into independent stages reduced troubleshooting complexity and created a reliable foundation for later Forge deployment.
+
+---
+
+## Validation
+
+The cloud server was successfully provisioned and became the foundation for every later stage of the project.
+
+Successful SSH access, Linux environment preparation, firewall configuration, and stable remote connectivity confirmed that the infrastructure was ready for Java installation, Paper testing, and subsequent Forge deployment.
+
+The infrastructure validation also confirmed that future problems would likely originate from the application layer rather than the cloud environment itself.
 
 ---
 
@@ -66,4 +92,17 @@ Building the server taught me that successful deployment starts long before inst
 
 Infrastructure preparation—including operating system installation, remote access, and network configuration—is the foundation for every step that follows.
 
-This experience also changed how I approached technical problems. Rather than searching for a single solution, I learned to break deployment into smaller stages and verify each one independently before moving forward.
+I also learned to separate infrastructure problems from application problems. Verifying each layer independently made later debugging significantly more efficient and reduced unnecessary troubleshooting.
+
+---
+
+## Engineering Skills Demonstrated
+
+- Cloud infrastructure deployment
+- Linux server administration
+- SSH remote management
+- Network configuration
+- Firewall configuration
+- Infrastructure validation
+- Deployment planning
+- Technical documentation
