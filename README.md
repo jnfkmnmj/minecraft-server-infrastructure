@@ -1,27 +1,144 @@
-# Minecraft Server Infrastructure Project
+# Minecraft Server Infrastructure
 
-A personal computer science project focused on deploying and managing a modded Minecraft Forge server on Linux cloud infrastructure.
+A computer science infrastructure project documenting the deployment, troubleshooting, maintenance, and migration of a modded Minecraft Forge server across Linux and Windows environments.
 
-## Project Goals
+The project began as an attempt to replace an unstable peer-to-peer multiplayer setup with a dedicated cloud server. It later developed into a broader exploration of Linux administration, cloud infrastructure, software integration, automation, performance analysis, and recovery planning.
 
-- Deploy Minecraft Forge servers on Ubuntu Linux
-- Learn Linux server administration and SSH workflows
-- Develop server automation and management scripts
-- Troubleshoot mod compatibility and networking issues
-- Optimize server performance and stability
+## Project Objectives
+
+* Deploy a Forge 1.20.1 server on Ubuntu Linux
+* Build a reliable environment for cross-region multiplayer
+* Learn Linux and SSH-based server administration
+* Integrate and troubleshoot a large collection of Forge mods
+* Automate routine server management tasks
+* Monitor system performance and resource limitations
+* Preserve and migrate the complete server environment
+* Document real troubleshooting processes and engineering decisions
 
 ## Technologies
 
-- Ubuntu Linux
-- SSH
-- Bash
-- Java 17
-- Forge 1.20.1
-- Vultr Cloud Server
-- UFW Firewall
-- screen
+* Ubuntu 22.04
+* Windows
+* Java 17
+* Minecraft Forge 1.20.1
+* Paper 1.20.1
+* Bash
+* SSH
+* SCP
+* UFW
+* GNU Screen
+* Vultr Cloud Compute
+* JSON configuration
+* TACZ
+* YSM
+* PacketFixer
+* XL Packets
+
+## Key Features
+
+* Cloud server provisioning and remote administration
+* Forge deployment and runtime configuration
+* Server startup, restart, monitoring, and backup scripts
+* Client-side and server-side mod classification
+* Dependency and compatibility troubleshooting
+* TACZ gunpack JSON customization
+* CPU, memory, disk, and uptime monitoring
+* Automated backup retention and log archiving
+* Cross-platform server migration and recovery validation
+
+## Repository Structure
+
+```text
+minecraft-server-infrastructure/
+├── assets/
+│   └── Project screenshots and visual references
+├── configs/
+│   └── Example server configuration files
+├── docs/
+│   ├── case-studies/
+│   │   └── Real deployment and troubleshooting experiences
+│   └── Technical and operational documentation
+├── scripts/
+│   └── Bash automation and server-management tools
+└── README.md
+```
+
+## Case Studies
+
+The following case studies document real engineering problems encountered during the project. They focus on investigation, technical reasoning, validation, and lessons learned rather than isolated tutorials.
+
+| Case Study                                                                                  | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [Cloud Server Provisioning](docs/case-studies/cloud-server-provisioning-case-study.md)      | Replacing an unstable peer-to-peer setup with an Ubuntu cloud server and validating the infrastructure layer.            |
+| [Forge Deployment](docs/case-studies/forge-deployment-retrospective.md)                     | Transitioning from a Paper baseline to Forge and understanding its runtime structure, dependencies, and startup process. |
+| [Mod Integration and Compatibility](docs/case-studies/mod-integration-and-compatibility.md) | Classifying client and server mods, managing dependencies, and testing community-proposed compatibility solutions.       |
+| [TACZ Gunpack Customization](docs/case-studies/tacz-gunpack-customization.md)               | Tracing active resource paths and validating JSON-based weapon and ammunition configuration changes.                     |
+| [Performance and Stability](docs/case-studies/performance-and-stability-analysis.md)        | Monitoring resource constraints and improving reliability under a large modded workload.                                 |
+| [Server Migration and Backup](docs/case-studies/server-migration-and-backup-strategy.md)    | Preserving the complete server environment and validating restoration before retiring the original VPS.                  |
+
+## Project Timeline
+
+### Phase 1 — Infrastructure Planning
+
+The original peer-to-peer multiplayer setup became unreliable over long distances. I compared cloud providers, selected Vultr, deployed Ubuntu, and established remote SSH access.
+
+### Phase 2 — Baseline Validation
+
+Before adding Forge and mods, I deployed a lightweight Paper server to verify Java, networking, firewall rules, port accessibility, and multiplayer connectivity.
+
+### Phase 3 — Forge Deployment
+
+I installed Forge, investigated its generated directory structure, resolved startup problems, and established a clean working Forge environment.
+
+### Phase 4 — Mod Integration
+
+I integrated mods incrementally, separated client-only and server-required components, managed dependencies, and tested compatibility after each change.
+
+### Phase 5 — Configuration and Customization
+
+I investigated TACZ resource loading, located the active gunpack, modified JSON configuration files, and verified the changes during runtime.
+
+### Phase 6 — Performance and Operations
+
+I monitored system resources, created maintenance and recovery scripts, reviewed logs, managed backups, and evaluated infrastructure limitations.
+
+### Phase 7 — Migration and Preservation
+
+Before retiring the original VPS, I compressed and transferred the complete server environment, restored it on Windows, and verified that the project was no longer dependent on one cloud instance.
+
+## Automation Scripts
+
+The `scripts/` directory includes tools for:
+
+* starting, stopping, and restarting the server
+* checking server status
+* automatically recovering from crashes
+* creating and rotating backups
+* archiving logs
+* monitoring CPU, memory, disk, processes, uptime, and network connections
+* verifying Java and required server directories
+* generating server status reports
+
+## Engineering Approach
+
+Several principles guided the project:
+
+1. Validate the simplest working environment before adding complexity.
+2. Change one variable at a time during troubleshooting.
+3. Read logs before making configuration changes.
+4. Treat community solutions as hypotheses that require testing.
+5. Verify runtime behavior instead of assuming a file is active.
+6. Design backups around restoration, not only storage.
+7. Document decisions so the process can be repeated.
 
 ## Current Status
 
-Project setup initialized.
-More deployment scripts, documentation, and automation tools will be added over time.
+The core infrastructure, automation scripts, operational documentation, and six engineering case studies have been completed.
+
+Future improvements may include:
+
+* refreshed deployment screenshots
+* automated health alerts
+* improved backup verification
+* containerized deployment experiments
+* a lightweight monitoring dashboard
