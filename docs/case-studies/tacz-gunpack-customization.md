@@ -86,3 +86,16 @@ When working with modded applications:
 - Community knowledge can significantly reduce debugging time when dealing with large open-source mod ecosystems.
 
 These practices made future TACZ customization considerably faster and reduced unnecessary troubleshooting.
+
+---
+
+## Engineering Skills Demonstrated
+
+- Configuration analysis
+- Runtime validation
+- JSON configuration
+- Resource management
+- Root cause investigation
+- Incremental testing
+- Systematic debugging
+- Technical documentation
