@@ -2,13 +2,14 @@
 
 A computer science infrastructure project documenting the deployment, troubleshooting, maintenance, and migration of a modded Minecraft Forge server across Linux and Windows environments.
 
-The project began as an attempt to replace an unstable peer-to-peer multiplayer setup with a dedicated cloud server. It later developed into a broader exploration of Linux administration, cloud infrastructure, software integration, automation, performance analysis, and recovery planning.
+The project began as an attempt to replace an unstable peer-to-peer multiplayer setup with a dedicated cloud server. It later developed into a broader exploration of Linux administration, cloud infrastructure, software integration, automation, performance analysis, data migration, and recovery planning.
 
 ## Project Objectives
 
 * Deploy a Forge 1.20.1 server on Ubuntu Linux
 * Build a reliable environment for cross-region multiplayer
 * Learn Linux and SSH-based server administration
+* Migrate an existing multiplayer world to a dedicated server
 * Integrate and troubleshoot a large collection of Forge mods
 * Automate routine server management tasks
 * Monitor system performance and resource limitations
@@ -38,6 +39,7 @@ The project began as an attempt to replace an unstable peer-to-peer multiplayer 
 
 * Cloud server provisioning and remote administration
 * Forge deployment and runtime configuration
+* Existing-world migration and player-data validation
 * Server startup, restart, monitoring, and backup scripts
 * Client-side and server-side mod classification
 * Dependency and compatibility troubleshooting
@@ -51,30 +53,39 @@ The project began as an attempt to replace an unstable peer-to-peer multiplayer 
 ```text
 minecraft-server-infrastructure/
 ├── assets/
-│   └── Project screenshots and visual references
+│   └── Project assets and visual references
 ├── configs/
 │   └── Example server configuration files
 ├── docs/
 │   ├── case-studies/
-│   │   └── Real deployment and troubleshooting experiences
+│   │   └── Seven deployment and troubleshooting case studies
+│   ├── project-lessons-learned.md
 │   └── Technical and operational documentation
 ├── scripts/
 │   └── Bash automation and server-management tools
 └── README.md
 ```
 
+## Documentation
+
+| Document                                                   | Description                                                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [Project Lessons Learned](docs/project-lessons-learned.md) | Engineering principles developed through deployment, debugging, validation, and migration.     |
+| [Case Studies](docs/case-studies/)                         | Seven real infrastructure, integration, customization, performance, and migration experiences. |
+
 ## Case Studies
 
 The following case studies document real engineering problems encountered during the project. They focus on investigation, technical reasoning, validation, and lessons learned rather than isolated tutorials.
 
-| Case Study                                                                                  | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [Cloud Server Provisioning](docs/case-studies/cloud-server-provisioning-case-study.md)      | Replacing an unstable peer-to-peer setup with an Ubuntu cloud server and validating the infrastructure layer.            |
-| [Forge Deployment](docs/case-studies/forge-deployment-retrospective.md)                     | Transitioning from a Paper baseline to Forge and understanding its runtime structure, dependencies, and startup process. |
-| [Mod Integration and Compatibility](docs/case-studies/mod-integration-and-compatibility.md) | Classifying client and server mods, managing dependencies, and testing community-proposed compatibility solutions.       |
-| [TACZ Gunpack Customization](docs/case-studies/tacz-gunpack-customization.md)               | Tracing active resource paths and validating JSON-based weapon and ammunition configuration changes.                     |
-| [Performance and Stability](docs/case-studies/performance-and-stability-analysis.md)        | Monitoring resource constraints and improving reliability under a large modded workload.                                 |
-| [Server Migration and Backup](docs/case-studies/server-migration-and-backup-strategy.md)    | Preserving the complete server environment and validating restoration before retiring the original VPS.                  |
+| Case Study                                                                                  | Description                                                                                                                  |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [Cloud Server Provisioning](docs/case-studies/cloud-server-provisioning-case-study.md)      | Replacing an unstable peer-to-peer setup with an Ubuntu cloud server and validating the infrastructure layer.                |
+| [Forge Deployment](docs/case-studies/forge-deployment-retrospective.md)                     | Transitioning from a Paper baseline to Forge and understanding its runtime structure, dependencies, and startup process.     |
+| [World Migration](docs/case-studies/world-migration-case-study.md)                          | Migrating an existing local world to the cloud server, resolving transfer bottlenecks, and validating world and player data. |
+| [Mod Integration and Compatibility](docs/case-studies/mod-integration-and-compatibility.md) | Classifying client and server mods, managing dependencies, and testing community-proposed compatibility solutions.           |
+| [TACZ Gunpack Customization](docs/case-studies/tacz-gunpack-customization.md)               | Tracing active resource paths and validating JSON-based weapon and ammunition configuration changes.                         |
+| [Performance and Stability](docs/case-studies/performance-and-stability-analysis.md)        | Monitoring resource constraints and improving reliability under a large modded workload.                                     |
+| [Server Migration and Backup](docs/case-studies/server-migration-and-backup-strategy.md)    | Preserving the complete server environment and validating restoration before retiring the original VPS.                      |
 
 ## Project Timeline
 
@@ -90,19 +101,23 @@ Before adding Forge and mods, I deployed a lightweight Paper server to verify Ja
 
 I installed Forge, investigated its generated directory structure, resolved startup problems, and established a clean working Forge environment.
 
-### Phase 4 — Mod Integration
+### Phase 4 — World Migration
+
+I compressed and transferred an existing local world to the cloud server, restored it in the Forge environment, and verified world integrity and player-data behavior.
+
+### Phase 5 — Mod Integration
 
 I integrated mods incrementally, separated client-only and server-required components, managed dependencies, and tested compatibility after each change.
 
-### Phase 5 — Configuration and Customization
+### Phase 6 — Configuration and Customization
 
 I investigated TACZ resource loading, located the active gunpack, modified JSON configuration files, and verified the changes during runtime.
 
-### Phase 6 — Performance and Operations
+### Phase 7 — Performance and Operations
 
 I monitored system resources, created maintenance and recovery scripts, reviewed logs, managed backups, and evaluated infrastructure limitations.
 
-### Phase 7 — Migration and Preservation
+### Phase 8 — Migration and Preservation
 
 Before retiring the original VPS, I compressed and transferred the complete server environment, restored it on Windows, and verified that the project was no longer dependent on one cloud instance.
 
@@ -131,9 +146,24 @@ Several principles guided the project:
 6. Design backups around restoration, not only storage.
 7. Document decisions so the process can be repeated.
 
+A more detailed reflection on these principles is available in [Project Lessons Learned](docs/project-lessons-learned.md).
+
 ## Current Status
 
-The core infrastructure, automation scripts, operational documentation, and six engineering case studies have been completed.
+The core infrastructure, automation scripts, operational documentation, seven engineering case studies, and project reflection have been completed.
+
+The repository now documents the complete project lifecycle:
+
+```text
+Infrastructure Planning
+→ Baseline Validation
+→ Forge Deployment
+→ World Migration
+→ Mod Integration
+→ TACZ Customization
+→ Performance and Operations
+→ Server Migration and Preservation
+```
 
 Future improvements may include:
 
