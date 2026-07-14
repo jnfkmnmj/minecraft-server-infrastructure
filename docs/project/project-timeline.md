@@ -1,32 +1,37 @@
 # Project Timeline
 
-## Phase 1
+## Phase 1 — Project Planning
 
-Initial interest in hosting a multiplayer Minecraft server.
+Initial interest in hosting a multiplayer Minecraft server and researching possible deployment approaches.
 
-## Phase 2
+## Phase 2 — Linux Fundamentals
 
-Learned Linux server administration and SSH workflows.
+Learned Ubuntu server administration, SSH workflows, networking, and basic server management.
 
-## Phase 3
+## Phase 3 — Initial Server Deployment
 
-Deployed Minecraft Forge on Ubuntu Linux.
+Successfully deployed Paper and later Minecraft Forge on Ubuntu Linux, establishing the project's technical foundation.
 
-## Phase 4
+## Phase 4 — Integration & Troubleshooting
 
-Troubleshot mod compatibility and deployment issues.
+Resolved mod compatibility issues, packet synchronization problems, world migration challenges, and deployment failures.
 
-## Phase 5
+## Phase 5 — Automation & Operations
 
-Developed automation scripts and operational documentation.
+Developed automation scripts, maintenance workflows, monitoring procedures, and operational documentation.
 
-## Phase 6
+## Phase 6 — Documentation & Knowledge Base
 
-Continued improving deployment reliability, monitoring, and maintenance workflows.
+Organized technical documentation, created structured deployment guides, and documented troubleshooting workflows for future maintenance.
 
-## Future Goals
+## Phase 7 — Case Studies & Project Review
 
-- Re-deploy a live Forge server
-- Expand automation capabilities
+Documented major engineering decisions through detailed case studies, summarized lessons learned, and completed the documentation architecture for long-term reference.
+
+# Future Goals
+
+- Re-deploy a production Minecraft Forge server
+- Continue expanding automation capabilities
 - Improve monitoring and reporting
 - Explore containerization technologies
+- Apply the infrastructure experience to larger backend projects
