@@ -8,6 +8,8 @@ Unlike a vanilla or Paper server, a Forge server requires every installed mod to
 
 As more mods were introduced, I realized that deploying a large Forge server was no longer simply about installing software—it became an integration project involving multiple independent components.
 
+---
+
 ## Problem
 
 At first, I assumed that installing mods was simply a matter of copying every `.jar` file into the `mods` folder.
@@ -19,6 +21,8 @@ Some mods were designed only for the client, while others had to exist on both t
 As the number of installed mods increased, compatibility issues became increasingly difficult to isolate. A startup failure could be caused by an incorrect dependency, an incompatible version, an unnecessary client-side mod, or an interaction between multiple mods.
 
 Simply reinstalling everything was no longer a practical solution.
+
+---
 
 ## Investigation
 
@@ -37,7 +41,17 @@ When problems occurred, I avoided making multiple changes at once. Instead, I co
 
 Over time, this became a structured debugging process instead of simple trial and error.
 
-## Compatibility Strategy
+Not every problem could be solved using official documentation alone.
+
+Several compatibility issues had already been discussed by members of the Minecraft modding community. I referred to GitHub discussions, community recommendations, and verified user experiences to understand possible solutions.
+
+Rather than copying community fixes directly, I treated them as hypotheses.
+
+Every proposed solution was tested in my own environment before becoming part of the server configuration. This approach helped me avoid introducing additional problems while still benefiting from existing community knowledge.
+
+---
+
+## Solution
 
 As the server configuration became more complex, I established several personal rules that significantly improved debugging efficiency.
 
@@ -47,17 +61,9 @@ Each modification was validated independently. Instead of changing several mods 
 
 I also separated client-only mods from server-side mods and verified dependency relationships before deployment. This reduced unnecessary startup failures and made compatibility issues much easier to locate.
 
-## Community Knowledge
+---
 
-Not every problem could be solved using official documentation alone.
-
-Several compatibility issues had already been discussed by members of the Minecraft modding community. I referred to GitHub discussions, community recommendations, and verified user experiences to understand possible solutions.
-
-Rather than copying community fixes directly, I treated them as hypotheses.
-
-Every proposed solution was tested in my own environment before becoming part of the server configuration. This approach helped me avoid introducing additional problems while still benefiting from existing community knowledge.
-
-## Iterative Validation
+## Validation
 
 Large-scale mod integration turned into an iterative engineering process.
 
@@ -77,8 +83,6 @@ Other times, a proposed fix introduced new compatibility problems, requiring ano
 
 Instead of treating these failures as separate problems, I gradually viewed them as part of a systematic validation process.
 
-## Outcome
-
 By the end of this stage, I had established a repeatable workflow for integrating Forge mods.
 
 Instead of relying on trial and error, I understood how to organize mods based on their roles, manage dependencies, evaluate community solutions, and isolate compatibility issues during deployment.
@@ -86,6 +90,8 @@ Instead of relying on trial and error, I understood how to organize mods based o
 The server configuration became progressively more stable, and future troubleshooting required significantly less guesswork than during the initial deployment.
 
 This workflow later supported more advanced mod integration without requiring a complete rebuild of the server environment.
+
+---
 
 ## Lessons Learned
 
@@ -98,6 +104,8 @@ Breaking large problems into small, verifiable changes made debugging much more 
 More importantly, I learned to trust evidence instead of assumptions.
 
 Startup logs, dependency information, and controlled testing consistently provided more reliable answers than making multiple configuration changes based on intuition.
+
+---
 
 ## Engineering Skills Demonstrated
 
